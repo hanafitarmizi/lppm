@@ -17,6 +17,27 @@ class Lppm extends RouterGroup
         $this->setPrefix('');
         $this->add('/', 'index::index');
 
+
+        #kelola
+
+        $this->add('/kelola', 'kelola::kelola');
+        $this->add('/masuk', 'auth::login');
+        $this->add('/keluar', 'auth::logout');
+
+        $this->add('/loginproses', 'auth::loginproses');
+
+        #pengumuman
+        $this->add('/kelola/create', 'kelola::create');
+        $this->add('/kelola/delete/{id_pengumuman}','kelola::delete');
+        $this->add('/kelola/edit','kelola::edit');
+
+        #berita
+        $this->add('/berita', 'webberita::webberita');
+        $this->add('/berita/tambah', 'webberita::tambah');
+        $this->add('/berita/create', 'webberita::create');
+        $this->add('/berita/delete/{id_berita}','webberita::delete');
+        $this->add('/berita/edit/{id_berita}','webberita::edit');
+        $this->add('/berita/saves','webberita::saves');
     }
 
 }

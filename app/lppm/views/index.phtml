@@ -1,21 +1,314 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Phalcon PHP Framework</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.ico')?>"/>
-    </head>
-    <body>
-        <div class="container">
-            <?php echo $this->getContent(); ?>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>LPPM UIN SUSKA RIAU</title>
+    <!-- CSS -->
+
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+
+    <link rel="icon" type="image/x-icon" href="<?= $this->url->get('') ?>assets/lppm/img/basic/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="<?= $this->url->get('') ?>assets/lppm/css/app.css">
+
+
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+
+    <main>
+        <section class="no-m white text-black p-t-b-10">
+
+            <div class="container">
+
+
+
+                <header class="p-t-50">
+
+                    <h1 class="s-64 font-weight-bolder">LPPM
+
+                        <small class="text-green">UIN SUSKA RIAU</small>
+
+
+                    </h1>
+
+                    <p class="s-24">Lembaga Penelitian dan Pengembangan Mahasiswa</p>
+                </header>
+            </div>
+        </section>
+
+        <?php if ($this->session->get('id_user')) : ?>
+        <section class=" light-green sticky p-t-b-5 shadow ">
+            <div class="   container">
+                <ul class="project-filter text-white">
+                    <li  > <a href="<?= $this->url->get('berita')?>">Berita </a></li>
+                    <li >Dokumen</li>
+                    <li >Pengumuman</li>
+                    <li >Agenda</li>
+                    <li>Kontak</li>
+                    <li>Dokumen</li>
+
+                </ul>
+            </div>
+        </section>
+
+            <?php else : ?>
+
+            <section class=" light-green sticky p-t-b-5 shadow ">
+                <div class="   container">
+                    <ul class="project-filter text-white">
+                        <li data-filter="*" >Home</li>
+                        <li data-filter=".s1">Tentang</li>
+                        <li data-filter=".s2">Berita</li>
+                        <li data-filter=".s3">Pengumuman</li>
+                        <li data-filter=".s4">Kontak</li>
+                        <li  data-filter=".s5">Dokumen</li>
+                        <li > <a href="<?= $this->url->get('masuk')?>">Login </a></li>
+                    </ul>
+                </div>
+            </section>
+
+
+        <?php endif ; ?>
+
+
+
+
+
+        <!-- Modal -->
+
+
+
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog width-400" role="document">
+                <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                                    class="paper-nav-toggle active"><i></i></a>
+                    <div
+                            class="modal-body no-p">
+                        <div class="text-center p-40 p-b-0">
+                            <img src="assets/img/dummy/u4.png" alt="">
+                            <h3>Welcome Back</h3>
+                            <p class="p-t-b-20">Masukkan data login anda</p>
+                        </div>
+                        <div class="light p-40 b-t-b">
+                            <form action="<?= $this->url->get('loginproses') ?>" method="post">
+                                <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                                    <input type="text" class="form-control form-control-lg"
+                                           placeholder="Email Address" name="id_user">
+                                </div>
+                                <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                    <input type="text" class="form-control form-control-lg"
+                                           placeholder="Password" name="password">
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                                <small class="forget-pass">Have you forgot your username or password ?</small>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
+
+
+        <?= $this->getContent(); ?>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
+                        <img src="assets/img/basic/logo.png" alt="Knowledge">
+                        <span class="circle"></span>
+                    </a>
+                </div>
+                <div class="col-6  col-md-4 col-lg-2">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a>
+                        </li>
+                        <li><a href="#">Blog</a>
+                        </li>
+                        <li><a href="#">Community</a>
+                        </li>
+                        <li><a href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6  col-md-4  col-lg-2">
+                    <h6>Knowledgebase</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a>
+                        </li>
+                        <li><a href="#">Blog</a>
+                        </li>
+                        <li><a href="#">Community</a>
+                        </li>
+                        <li><a href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6  col-md-4 col-lg-2">
+                    <h6>About Us</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a>
+                        </li>
+                        <li><a href="#">Blog</a>
+                        </li>
+                        <li><a href="#">Community</a>
+                        </li>
+                        <li><a href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-12 col-12 col-xl-3 responsive-phone">
+                    <h6>Connect via Social</h6>
+                    <ul class="social">
+                        <li class="facebook"><a href="#"><i class="icon icon-facebook"></i></a>
+                        </li>
+                        <li class="twitter"><a href="#"><i class="icon icon-twitter"></i></a>
+                        </li>
+                        <li class="gplus"><a href="#"><i class="icon icon-google-plus"></i></a>
+                        </li>
+                    </ul>
+                    <div class="copyrights">
+                        <p>&#xA9; 2016 knowledge Copyrights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Login modal -->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog width-400" role="document">
+            <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                                class="paper-nav-toggle active"><i></i></a>
+                <div
+                        class="modal-body no-p">
+                    <div class="text-center p-40 p-b-0">
+                        <img src="assets/img/dummy/u4.png" alt="">
+                        <h3>Welcome Back</h3>
+                        <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                            for you</p>
+                    </div>
+                    <div class="light p-40 b-t-b">
+                        <form action="dashboard2.html">
+                            <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                                <input type="text" class="form-control form-control-lg"
+                                       placeholder="Email Address">
+                            </div>
+                            <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                <input type="text" class="form-control form-control-lg"
+                                       placeholder="Password">
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                            <small class="forget-pass">Have you forgot your username or password ?</small>
+                        </form>
+                    </div>
+                    <div class="p-40"><a href="#" class="btn btn-lg btn-block btn-social facebook">
+                            <i class="icon-facebook"></i> Login with Facebook
+                        </a>
+                        <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                            <i class="icon-twitter"></i> Login with Twitter
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SignUp modal -->
+    <div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                                class="paper-nav-toggle active"><i></i></a>
+                <div
+                        class="modal-body no-p">
+                    <div class="row">
+                        <div class="col-lg-5 grid">
+                            <div class="p-40">
+                                <h5 class="p-t-40">Sign Up Using Social Account</h5>
+                                <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                                    for you</p> <a href="#" class="btn btn-lg btn-block btn-social facebook">
+                                    <i class="icon-facebook"></i> Login with Facebook
+                                </a>
+                                <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                                    <i class="icon-twitter"></i> Login with Twitter
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="light p-t-b-40">
+                                <div class="p-40">
+                                    <h5 class="p-b-20">Create New User Account</h5>
+                                    <form action="dashboard2.html ">
+                                        <div class="form-group has-icon"><i class="icon-user-circle"></i>
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Your Name">
+                                        </div>
+                                        <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Email Address">
+                                        </div>
+                                        <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Password">
+                                        </div>
+                                        <div class="form-group has-icon"><i class="icon-repeat"></i>
+                                            <input type="text" class="form-control form-control-lg"
+                                                   placeholder="Confirm Password">
+                                        </div>
+                                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up Now">
+                                        <p class="forget-pass">A verification email wil be sent to you</p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--End Page page_wrrapper -->
+<script src="<?= $this->url->get('') ?>assets/lppm/js/panel.js"></script>
+<script src="<?= $this->url->get('') ?>assets/lppm/js/app.js"></script>
+    <script src="<?= $this->url->get('') ?>assets/js/jquery-3.2.1.min.js"></script>
+    <script src="<?= $this->url->get('') ?>assets/ckeditor/ckeditor.js"></script>
+
+</body>
 </html>
